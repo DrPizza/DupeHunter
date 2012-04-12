@@ -161,7 +161,7 @@ std::vector<std::vector<std::wstring> > n_way_compare(unsigned __int64 file_size
 
 	std::vector<std::vector<std::wstring> > duplicate_sets;
 	std::vector<bool> already_used(names.size(), false);
-	for(size_t i(0), lim(names.size()); i < lim; ++i) {
+	for(size_t i(0), lim(names.size()); i < lim - 1; ++i) {
 		if(!already_used[i]) {
 			std::vector<std::wstring> duplicates;
 			duplicates.push_back(names[i]);
