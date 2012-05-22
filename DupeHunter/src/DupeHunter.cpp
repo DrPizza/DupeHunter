@@ -210,12 +210,12 @@ try {
 
 	if(vm.count("help")) {
 		std::cout << desc << std::endl;
-		return 1;
+		return -1;
 	}
 
 	if(!vm.count("source")) {
 		std::cerr << desc << std::endl;
-		return 1;
+		return -1;
 	}
 
 	void* buffer(::VirtualAlloc(nullptr, buffer_size,  MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE));
