@@ -265,6 +265,7 @@ try {
 			++it;
 		}
 	}
+	unsigned __int64 total_duplicates(0);
 	std::wcout << L"Comparing " << files_read << L" files with non-unique sizes" << std::endl;
 	for(auto it(files.begin()), end(files.end()); it != end; ++it) {
 		std::wcout << L"Comparing " << it->second.size() << L" files of size " << it->first << std::endl;
@@ -275,10 +276,11 @@ try {
 			for(std::vector<std::wstring>::const_iterator nit(it->begin()), nend(it->end()); nit != nend; ++nit) {
 				std::wcout << L"\t\t" << *nit << std::endl;
 			}
+			total_duplicates += it->size();
 		}
 	}
 
-	return 0;
+	return total_duplicates > std::numeric_limits<int>::max() ? std::numeric_limits<int>::max() : static_cast<int>(total_duplicates);
 }
 catch(std::exception& e) {
 	std::cerr << "Caught exception" << std::endl;
